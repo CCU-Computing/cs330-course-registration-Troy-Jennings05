@@ -15,10 +15,12 @@ namespace cs330courses
 
             Console.WriteLine("---------");
             List<CourseOffering> theList = service.getOfferingsByGoalIdAndSemester("CG2","Spring 2021");
-            foreach(CourseOffering c in theList) {
+            Console.WriteLine("theList " + theList); 
+            foreach (CourseOffering c in theList)
+            {
                 Console.WriteLine(c);
             }
-            Console.WriteLine("---------");
+            Console.WriteLine("---------");  
 
             
             // Make each of the next 6 sections of code work
