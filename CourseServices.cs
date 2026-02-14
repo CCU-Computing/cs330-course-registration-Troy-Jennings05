@@ -61,8 +61,8 @@ namespace cs330_proj1
 
          return results;
       }
+      //USER STORY 4
 
-      
       public List<CourseOffering> getCourseOfferingsBySemesterAndDept(string semester, string dept)
       {
          List<CourseOffering> results = new List<CourseOffering>();
@@ -78,78 +78,9 @@ namespace cs330_proj1
 
          return results;
       }
-
-      
-      public List<Course> getCoursesByGoalId(string goalId)
-      {
-         foreach (CoreGoal goal in repo.Goals)
-         {
-            if (goal.Id.Equals(goalId))
-            {
-               return goal.Courses;
-            }
-         }
-
-         return new List<Course>();
-      }
-
-      
-      public List<Course> getCoursesByGoalIds(string goalId1, string goalId2)
-      {
-         CoreGoal g1 = null;
-         CoreGoal g2 = null;
-
-         foreach (CoreGoal g in repo.Goals)
-         {
-            if (g.Id.Equals(goalId1)) g1 = g;
-            if (g.Id.Equals(goalId2)) g2 = g;
-         }
-
-         List<Course> results = new List<Course>();
-
-         if (g1 != null && g2 != null)
-         {
-            foreach (Course c in g1.Courses)
-            {
-               if (g2.Courses.Contains(c))
-               {
-                  results.Add(c);
-               }
-            }
-         }
-
-         return results;
-      }
-
-      
-      public List<CoreGoal> getCoreGoalsThatAreNotCoveredBySemester(string semester)
-      {
-         List<CoreGoal> results = new List<CoreGoal>();
-
-         foreach (CoreGoal goal in repo.Goals)
-         {
-            bool covered = false;
-
-            foreach (CourseOffering offering in repo.Offerings)
-            {
-               if (offering.Semester.Equals(semester) &&
-                   goal.Courses.Contains(offering.TheCourse))
-               {
-                  covered = true;
-                  break;
-               }
-            }
-
-            if (!covered)
-            {
-               results.Add(goal);
-            }
-         }
-
-         return results;
-      }
    }
-}
+ }
+     
 
 
         
